@@ -1,0 +1,127 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="pageContainer">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h1 class="titleH1"><a href="/exchange-config">EXCHANGE</a><span> | {{action | uppercase}}
+                                EXCHANGE</span></h1>
+                    </div>
+                </div>
+                <div class="formSection">
+                    <form class="formControl" [formGroup]="outboundChannelForm" (ngSubmit)="submit()">
+                        <div class="formContainer center">
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="selectBox" appearance="outline">
+                                        <mat-label>Client</mat-label>
+                                        <mat-select formControlName="Client">
+                                            <mat-option *ngFor="let client of clients"
+                                                [value]="client.ClientName">{{client.ClientName}}</mat-option>
+                                        </mat-select>
+                                        <mat-error>{{errorMsg.CLIENT}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="selectBox" appearance="outline">
+                                        <mat-label>Inbound Channel</mat-label>
+                                        <mat-select formControlName="InboundChannel"
+                                            (selectionChange)="inboundChannelChanged($event)">
+                                            <mat-option *ngFor="let inboundChannel of inboundChannels"
+                                                [value]="inboundChannel.InboundChannel">{{inboundChannel.InboundChannel}}</mat-option>
+                                        </mat-select>
+                                        <mat-error>{{errorMsg.INBOUND_CHANNEL}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Exchange</mat-label>
+                                        <input matInput type="text" placeholder="Placeholder" formControlName="Exchange"
+                                            readonly>
+                                        <mat-error>{{errorMsg.EXCHANGE}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Pair</mat-label>
+                                        <input matInput type="text" placeholder="Placeholder" formControlName="Pair"
+                                            readonly>
+                                        <mat-error>{{errorMsg.PAIR}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Quantity</mat-label>
+                                        <input matInput type="number" placeholder="Placeholder"
+                                            formControlName="Quantity" readonly>
+                                            <mat-error>{{errorMsg.QUANTITY}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Spread</mat-label>
+                                        <input matInput type="number" placeholder="Placeholder"
+                                            formControlName="Spread" (ngModelChange)="getChannelName()">
+                                        <mat-error>{{errorMsg.SPREAD}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="selectBox" appearance="outline">
+                                        <mat-label>Algo</mat-label>
+                                        <mat-select formControlName="Algo" (ngModelChange)="getChannelName()">
+                                            <mat-option *ngFor="let algo of algos"
+                                                [value]="algo.Algo">{{algo.Algo}}</mat-option>
+                                        </mat-select>
+                                        <mat-error>{{errorMsg.ALGO}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Outbound Channel</mat-label>
+                                        <input matInput type="text" placeholder="Placeholder"
+                                            formControlName="OutboundChannel" readonly>
+                                            <mat-error>{{errorMsg.OUTBOUND_CHANNEL}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+
+                            <div class="formColWrapper2">
+                                <div class="formCol alignedLeft">
+                                    <mat-slide-toggle formControlName="IsActive">Active</mat-slide-toggle>
+                                </div>
+                            </div>
+
+
+                            <div class="formColWrapper2 alignRight">
+                                <div class="buttonWrapper">
+                                    <button mat-raised-button class="cancelBtn" type="button"
+                                        (click)="cancel()">Cancel</button>
+                                    <button mat-raised-button class="primaryBtn"
+                                        type="submit">{{action=='UPDATE'?action:'SAVE'}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

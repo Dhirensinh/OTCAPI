@@ -1,0 +1,137 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="pageContainer">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h1 class="titleH1"><a href="/pair-config">EXCHANGE PAIR CONFIG</a><span> {{action |
+                                uppercase}}
+                                PAIR</span></h1>
+                    </div>
+                </div>
+                <div class="formSection">
+                    <form class="formControl" [formGroup]="pairForm" (ngSubmit)="submit()">
+                        <div class="formContainer">
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="selectBox" appearance="outline">
+                                        <mat-label>Exchange</mat-label>
+                                        <mat-select formControlName="ExchangeName">
+                                            <mat-option *ngFor="let exchange of exchanges"
+                                                [value]="exchange.ExchangeName">{{exchange.ExchangeName}}</mat-option>
+                                        </mat-select>
+                                        <mat-error>{{ errorMsg.EXCHANGE_NAME }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Pair</mat-label>
+                                        <input matInput placeholder="Placeholder" formControlName="ExchangePair">
+                                        <mat-error>{{ errorMsg.EXCHANGE_PAIR }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="formCol">
+                                    <mat-form-field class="selectBox" appearance="outline">
+                                        <mat-label>Internal Pair</mat-label>
+                                        <mat-select formControlName="InternalPair">
+                                            <mat-option *ngFor="let internalPair of internalPairs"
+                                                [value]="internalPair.PairName">{{internalPair.PairName}}</mat-option>
+                                        </mat-select>
+                                        <mat-error>{{ errorMsg.INTERNAL_PAIR }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Min Notional</mat-label>
+                                        <input matInput type="number" placeholder="Placeholder"
+                                            formControlName="MinNotional">
+                                        <mat-error>{{ errorMsg.MIN_NOTIONAL }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Max Notional</mat-label>
+                                        <input matInput type="number" placeholder="Placeholder"
+                                            formControlName="MaxNotional">
+                                        <mat-error>{{ errorMsg.MAX_NOTIONAL }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Min Quantity</mat-label>
+                                        <input matInput type="number" placeholder="Placeholder"
+                                            formControlName="MinQuantity">
+                                        <mat-error>{{ errorMsg.MIN_QUANTITY }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Max Quantity</mat-label>
+                                        <input matInput type="number" placeholder="Placeholder"
+                                            formControlName="MaxQuantity">
+                                        <mat-error>{{ errorMsg.MAX_QUANTITY }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Tick Size</mat-label>
+                                        <input matInput type="number" placeholder="Placeholder"
+                                            formControlName="TickSize">
+                                        <mat-error>{{ errorMsg.TICK_SIZE }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>LOT Size</mat-label>
+                                        <input matInput type="number" placeholder="Placeholder"
+                                            formControlName="LotSize">
+                                        <mat-error>{{ errorMsg.LOT_SIZE }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Price Decimals</mat-label>
+                                        <input matInput type="number" placeholder="Placeholder"
+                                            formControlName="PriceDecimal">
+                                        <mat-error>{{ errorMsg.PRICE_DECIMAL }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Quantity Decimals</mat-label>
+                                        <input matInput type="number" placeholder="Placeholder"
+                                            formControlName="QuantityDecimal">
+                                        <mat-error>{{ errorMsg.QUANTITY_DECIMAL }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol alignedLeft">
+                                    <mat-slide-toggle formControlName="IsActive">Active</mat-slide-toggle>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2 alignRight">
+                                <div class="buttonWrapper">
+                                    <button mat-raised-button class="cancelBtn">Cancel</button>
+                                    <button mat-raised-button class="primaryBtn"
+                                        type="submit">{{action=='UPDATE'?action:'SAVE'}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

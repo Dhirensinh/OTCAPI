@@ -1,0 +1,209 @@
+/* :root {
+    --primary-color: #5832df;
+    --hText: #262262;
+    --pText: #4a4a4a;
+} */
+nav {
+    background:#5832df;    
+    padding: 10px 0;    
+}
+.dropdownRight {
+    right: 0 !important;
+    left: auto !important;
+}
+.whiteLogo img {
+    width: 225px;
+    padding: 5px 0px;
+}
+.topProfileicon {
+    padding: 0;
+}
+.topProfileicon::after {
+    display: none;
+}
+.topProfileicon img {
+    width: 38px;
+    height: 38px;
+    border: 1.2px solid rgb(38 34 98 / 50%);
+    padding: 2px;
+}
+nav .dropdown-menu {
+    top: 48px;
+}
+.topMenulink li {
+    padding: 0 20px;
+}
+.topMenulink li .active {
+    color: #fff;
+}
+.topMenulink li a {
+    color: #f1edff;
+}
+.topMenulink li a:hover {
+    color: #fff;
+}
+.topProfiledrop {
+    width: 250px;
+    background-color: #fff!important;
+    align-items: stretch!important;
+    flex-direction: column!important;
+    flex-shrink: 0!important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-radius: 6px;
+    border: 1px solid #dad1f8;
+    padding: 10px 0;
+    box-shadow: 0 0px 15px rgb(88 50 223 / 10%);
+}
+.topProfiledrop_name {
+    padding: 15px 10px;
+    margin-top: -10px;
+    background: #f6f5fd;
+}
+.topProfiledrop_name img {
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    padding: 1px;
+    margin-top: 5px;
+}
+.topProfiledrop_name h5 {
+    font-size: 13px;
+    padding-left: 10px;
+    color: #262262;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+.topProfiledrop_name h6 {    
+    font-size: 11px;    
+    padding: 3px 10px;
+    border-radius: 30px;
+    margin-left: 10px;
+    font-weight: 400;
+    display: -webkit-inline-box;
+    margin-bottom: 0;
+}
+.accVerified {
+    color: #02a385;
+    background: #dbecf0;
+}
+.accPending {
+    color: #ff0000;
+    background: #f7e2e9;
+}
+.border-bottom {
+    border-bottom: 1px solid rgb(218 209 248 / 35%) !important;
+}
+.topProfiledropdown a {
+    display: block;
+    color: #262262;
+    font-size: 14px;
+    border-bottom: 1px solid rgb(218 209 248 / 35%) !important;
+    padding: 10px 12px;
+}
+.topProfiledropdown a:hover {
+    background: #f6f5fd;
+    color: #5832df;
+    border-bottom: 1px solid rgb(218 209 248 / 35%) !important;
+    padding: 10px 12px;
+}
+.topProfiledropdown a:last-child {
+    color: #ff0000;
+    border-bottom: none !important;
+    margin-bottom: -8px;
+}
+.apidocBtn {
+    background: #26226275;
+    border: 1px solid #262262 !important;
+    color: #fff;
+    padding: 8px 20px;
+    box-shadow: none!important;
+    border: 0;
+    margin-left: 50px;
+    transition: .5s;
+    border-radius: 0.25rem;  
+}
+.apidocBtn:hover {
+    background: #262262;
+    border: 1px solid #262262 !important;
+    color: #fff; 
+}
+.headerMenus {
+    background-color: #fff!important;
+    align-items: stretch!important;
+    flex-direction: column!important;
+    flex-shrink: 0!important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-radius: 6px;
+    border: 1px solid #dad1f8;
+    padding: 0;
+    box-shadow: 0 0px 15px rgb(88 50 223 / 10%);
+    top: 46.5px !important;
+}
+.headerMenus li {
+    padding: 0;
+    display: block;
+    border-bottom: 1px solid rgb(218 209 248 / 35%) !important;
+}
+.headerMenus li a {
+    color: #262262;
+    font-size: 13px;
+    padding: 10px 12px;
+}
+.headerMenus li a:hover {
+    background: #f6f5fd;
+    color: #5832df;
+    padding: 10px 12px;
+}
+.headerMenus li:last-child {
+    border-bottom: none !important;
+}
+@media only screen and (max-width: 768px) and (min-width: 300px)  {
+    nav .dropdown-menu {
+        top: 13px;
+    }
+    .topMenulink li {
+        padding: 0;
+    }
+    .navbar-dark .navbar-toggler {
+        color: rgba(255,255,255,.55);
+        border-color: rgba(255,255,255,.1);
+        background: #262262;
+        padding: 0.25rem 0.5rem;
+    }
+    .navbar-dark .navbar-toggler:hover {
+        color: rgba(255,255,255,.55);
+        border-color: rgba(255,255,255,.1);
+        background: #262262;
+        opacity: .8;
+    }
+    .navbar-dark .navbar-toggler:focus {
+        box-shadow: none;
+    }
+    .apidocBtn {
+        margin-left: -20px;
+        margin-top: 20px;
+        margin-bottom: 5px;
+        display: -webkit-inline-box;
+    }
+    .headerMenus {
+        width: 250px;
+    }
+}
+@media only screen and (min-width: 978px)  {
+    .dropdown-menu {
+        display: block !important;
+        visibility: hidden;
+        opacity:0;
+        transform: translateY(50px);
+        transition:.5s ease all;
+    }
+    .dropdown-menu.show {
+        display: block !important;
+        visibility: visible;
+        opacity:1;
+        transform: translateY(0px);
+        transition:.5s ease all;
+    }
+}

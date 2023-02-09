@@ -1,0 +1,61 @@
+<!-- <div class="main-div">
+    <form #loginform="ngForm" (ngSubmit)="onSubmit(loginform)">
+        <mat-card class="login-box">            
+            <a routerLink="/" class="loginLogo">
+                <img src="./assets/logo.png" alt="Logo" class="logo">           
+            </a> 
+            <div class="loginBox">
+                <mat-card-content>
+                    <mat-form-field class="form-field">
+                        <input name="Username" ngModel #usr="ngModel" required matInput placeholder="Username">
+                        <mat-error *ngIf=" submitted && usr.errors?.['required'] ">
+                            Username is required.
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form-field">
+                        <input name="Password" ngModel #pwd="ngModel" required matInput placeholder="Password"
+                            type="password">
+                        <mat-error *ngIf="submitted && pwd.errors?.['required']">
+                            Password is required.
+                        </mat-error>
+                    </mat-form-field>
+                </mat-card-content>
+                <mat-card-actions class="login-action">
+                    <button type="submit" mat-flat-button class="primaryBtn"
+                        style="margin-bottom: 10px;">Login</button>
+                </mat-card-actions>
+            </div>
+        </mat-card>
+    </form>
+</div> -->
+
+<!-- New Login Design Start -->
+<section class="loginSec"> 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="loginBox">
+                    <div class="loginLogo">
+                        <a routerLink="/"><img src="assets/logo.png" alt="" class="img-fluid"></a>
+                    </div>
+                    <h1>Welcome to Login!</h1>
+                    <form #loginform="ngForm" (ngSubmit)="onSubmit(loginform)">
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">EMAIL ADDRESS</label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" name="Username" ngModel #usr="ngModel" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">PASSWORD</label>
+                          <input type="password" class="form-control" id="exampleInputPassword1" name="Password" ngModel #pwd="ngModel" required>
+                        </div>
+                        <div class="mt-4 text-end">
+                            <button type="submit" class="btn primaryBtn">SUBMIT</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- New Login Design Start -->

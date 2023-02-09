@@ -1,0 +1,61 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="pageContainer">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h1 class="titleH1">OUTBOUND CHANNEL CONFIG</h1>
+                    </div>
+                    <div class="headerDiv text-end">
+                        <mat-form-field class="searchBx1 me-2" appearance="outline">
+                            <mat-label>Search </mat-label>
+                            <input matInput (keyup)="applyCurrencyFilter($event)">
+                        </mat-form-field>
+                        <button class="toggleMenuIcon headerButton me-2" mat-raised-button
+                            routerLink="/new-outbound-channel-config">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                        <button class="toggleMenuIcon headerButton" mat-raised-button (click)="getAllOutboundChannelConfig()">
+                            <mat-icon>refresh</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="defaultTable outbountTbl">
+                    <mat-table [dataSource]="outboundChannelDataSource" matSort #outboundChannelSort="matSort">
+                        <ng-container *ngFor="let column of outboundChannelColumns" [matColumnDef]="column.columnDef"
+                            [ngSwitch]="column.columnDef">
+
+                            <ng-container *ngSwitchCase="'action'">
+                                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> {{column.header}}
+                                </mat-header-cell>
+                                <mat-cell mat-cell *matCellDef="let element">
+                                    <button class="toggleMenuIcon" mat-button (click)="updateOutboundChannel(element)">
+                                        <mat-icon>border_color</mat-icon>
+                                    </button>
+                                    <button class="toggleMenuIcon" mat-button (click)="deleteOutboundChannel(element)">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </mat-cell>
+                            </ng-container>
+
+                            <ng-container *ngSwitchDefault>
+                                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> {{column.header}}
+                                </mat-header-cell>
+                                <mat-cell mat-cell *matCellDef="let element">
+                                    {{column.cell(element)}}
+                                </mat-cell>
+                            </ng-container>
+
+                        </ng-container>
+                        <mat-header-row mat-header-row
+                            *matHeaderRowDef="displayedOutboundChannelColumns; sticky: true"></mat-header-row>
+                        <mat-row mat-row *matRowDef="let row; columns: displayedOutboundChannelColumns;"></mat-row>
+                    </mat-table>
+                    <mat-paginator #outboundChannelPaginator="matPaginator" class="reportPaginator" [pageSize]="pageSize"
+                        [pageSizeOptions]="[5, 10, 20, 50, 100]"></mat-paginator>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

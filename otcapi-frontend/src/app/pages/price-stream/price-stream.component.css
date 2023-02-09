@@ -1,0 +1,14 @@
+.txtClr {
+    color: #22202a !important;
+}
+.customWidth {
+    width: 200px;
+}
+.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {    
+    right: -6px ;
+}
+.example-button-row {
+    display: table-cell;
+    max-width: 600px;
+}
+  

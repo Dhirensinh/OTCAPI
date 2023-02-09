@@ -1,0 +1,78 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="pageContainer">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h1 class="titleH1"><a href="/api-settings">API Settings</a><span>  | API Key</span></h1>
+                    </div>
+                </div>
+                <div  class="pageCard">
+                    <div class="crashTradesWrapper">
+                        <div class="offset-md-3 col-md-6">
+                            <form [formGroup]="apiKeyForm" (ngSubmit)="submit()">
+                                <div class="col-md-12">
+
+                                    <div class="row mb-3">
+                                        <mat-form-field class="searchBox" appearance="outline">
+                                            <mat-label>Key Name</mat-label>
+                                            <input matInput formControlName="KeyName" required>
+                                            <mat-error *ngIf="apiKeyForm.get('KeyName')?.hasError('required')">
+                                                Key Name Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div  class="col-md-12 mb-3">
+                                        <mat-label>Permissions</mat-label>
+                                        <div>
+                                            <div style="display: inline-flex;">
+                                                <mat-checkbox class="example-margin me-4" formControlName="ViewPermission">View</mat-checkbox>
+                                                <mat-checkbox class="example-margin me-4" formControlName="TradePermission">Trade</mat-checkbox>
+                                                <mat-checkbox class="example-margin me-4" formControlName="TransferPermission">Transfer</mat-checkbox>
+                                            </div>
+                                         </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <mat-label>Key Restrictions</mat-label>
+                                        <mat-radio-group formControlName="IsRestricted" required>
+                                            <mat-radio-button [value]=false class="me-4">No Restriction</mat-radio-button>
+                                            <mat-radio-button [value]=true>Set IP Restriction</mat-radio-button>
+                                        </mat-radio-group>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <mat-error *ngIf="apiKeyForm.get('IsRestricted')?.hasError('required')">
+                                            IsRestricted Required
+                                        </mat-error>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <mat-form-field appearance="outline" class="txtArea">
+                                            <mat-label>IP Addresses</mat-label>
+                                            <textarea matInput formControlName="IPAddresses" [required]="apiKeyForm.get('IsRestricted')?.value=='1'"
+                                            [disabled]="apiKeyForm.get('IsRestricted')?.value=='0'"
+                                            ></textarea>
+                                            <mat-error *ngIf="apiKeyForm.get('IPAddresses')?.hasError('required')">
+                                                IPAddresses Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+
+                                </div>
+                                <div class="text-end mt-4">                                    
+                                    <button mat-raised-button class="btn cancelBtn me-1" type="button" (click)="cancel()">
+                                        Cancel
+                                    </button>
+                                    <button mat-raised-button class="btn primaryBtn ms-1" type="submit"> 
+                                        Generate API Key
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,110 @@
+<ngx-spinner bdColor="rgba(38, 34, 98, 0.5)" size="medium" color="#5832df" type="square-jelly-box" [fullScreen]="true">
+  <p style="color: white"> Loading... </p>
+</ngx-spinner>
+<div class="pageContainer" *ngIf="currentUser">
+  <div class="pageContent">
+    <!-- New Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <div class="whiteLogo">
+          <a routerLink="/"><img src="./assets/logo.png" alt="" class="img-fluid"></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 topMenulink">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" routerLink="/documentation">API DOCUMENTATION</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                TRADES
+              </a>
+              <ul class="dropdown-menu headerMenus">
+                <li><a class="dropdown-item" routerLink="/trade-report">TRADE REPORT</a></li>
+                <li><a class="dropdown-item" routerLink="/exchange-trade-report">EXCHANGE TRADE REPORT</a></li>
+                <li><a class="dropdown-item" routerLink="/position-book">POSITION BOOK</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="d-flex navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="dropdown-toggle topProfileicon" href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="./assets/img/profile-img.jpg" class="rounded-circle">
+              </a>
+              <div class="dropdown-menu dropdownRight topProfiledrop" aria-labelledby="navbarDropdown">
+                <a routerLink="/user-profile" class="d-flex border-bottom topProfiledrop_name">
+                  <img src="./assets/img/profile-img.jpg" class="rounded-circle">
+                  <div class="">
+                    <h5><strong>HI</strong>, {{userName | uppercase}}!</h5>
+                    <h6 class="accVerified"><i class="fa fa-check-circle"></i> VERIFIED</h6>
+                    <!-- <h6 class="accPending"><i class="fa fa-times-circle"></i> Pending</h6> -->
+                  </div>
+                </a>
+                <div class="topProfiledropdown">
+                  <a (click)="logout()">LOGOUT</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- New Navbar End -->
+    <div class="sideNavWithContentWrapper">
+      <mat-drawer-container class="example-container" autosize>
+        <mat-drawer #drawer class="example-sidenav" mode="side">
+          <div class="sidebarMenu">
+            <ul>
+              <li><a routerLink="/api-settings"><mat-icon>cloud_done</mat-icon><span>API CONFIG</span></a></li>
+              <li><a routerLink="/exchange-config"><mat-icon>swap_horiz</mat-icon><span>EXCHANGE CONFIG</span></a></li>
+              <li><a routerLink="/currency-config"><mat-icon>currency_exchange</mat-icon><span>CURRENCY
+                    CONFIG</span></a></li>
+              <li><a routerLink="/internal-pair-config"><mat-icon>leak_add</mat-icon><span>INTERNAL PAIR
+                    CONFIG</span></a></li>
+              <li><a routerLink="/pair-config"><mat-icon>transform</mat-icon><span>EXCHANGE PAIR CONFIG</span></a></li>
+              <li><a routerLink="/inbound-channel-config"><mat-icon>zoom_in_map</mat-icon><span>INBOUND CONFIG</span></a></li>
+              <li><a routerLink="/algo-master"><mat-icon>donut_small</mat-icon><span>ALGO MASTER</span></a></li>
+              <li><a routerLink="/client-master"><mat-icon>person_pin</mat-icon><span>CLIENT MASTER</span></a></li>
+              <li><a routerLink="/outbound-channel-config"><mat-icon>zoom_out_map</mat-icon><span>OUTBOUND CONFIG</span></a></li>
+              <li><a routerLink="/price-stream"><mat-icon>price_change</mat-icon><span>PRICE STREAM</span></a></li>
+            </ul>
+          </div>
+        </mat-drawer>
+
+        <div class="example-sidenav-content">
+          <button type="button" mat-button class="toggleBtn" (click)="drawer.toggle()">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+          <router-outlet></router-outlet>
+        </div>
+      </mat-drawer-container>
+    </div>
+  </div>
+  <footer class="footerBar">
+    <div class="footerSection">
+      <ul>
+        <li class="menuTitle">Products</li>
+        <li><a href="#">Invest</a></li>
+        <li><a href="#">Trade</a></li>
+      </ul>
+      <ul>
+        <li class="menuTitle">Offers</li>
+        <li><a href="#">Active Promotions</a></li>
+        <li><a href="#">LuckyDrop</a></li>
+      </ul>
+      <ul>
+        <li class="menuTitle">Other Sites</li>
+        <li><a href="#">Eclipton</a></li>
+        <li><a href="#">OTC</a></li>
+      </ul>
+    </div>
+  </footer>
+</div>
+<div class="pageContainer" *ngIf="!currentUser">
+  <app-login></app-login>
+</div>

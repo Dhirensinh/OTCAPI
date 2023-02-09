@@ -1,0 +1,93 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="pageContainer">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h1 class="titleH1"><a href="/internal-pair-config">INTERNAL PAIR CONFIG</a><span> |
+                                {{action | uppercase}}
+                                INTERNAL PAIR</span></h1>
+                    </div>
+                </div>
+                <div class="formSection">
+                    <form class="formControl" [formGroup]="internalPairForm" (ngSubmit)="submit()">
+                        <div class="formContainer">
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Pair Name</mat-label>
+                                        <input matInput placeholder="Placeholder" formControlName="PairName">
+                                        <mat-error>{{errorMsg.PAIR_NAME}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="formCol">
+                                    <mat-form-field class="selectBox" appearance="outline">
+                                        <mat-label>Base CCY</mat-label>
+                                        <mat-select formControlName="BaseCCY" [(ngModel)]="internalPairObj.BaseCCY">
+                                            <mat-option *ngFor="let currency of currencies"
+                                                [value]="currency.CurrencySymbol">{{currency.CurrencySymbol}}
+                                                ({{currency.CurrencyName}})</mat-option>
+                                        </mat-select>
+                                        <mat-error>{{errorMsg.BASE_CCY}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="selectBox" appearance="outline">
+                                        <mat-label>Quote CCY</mat-label>
+                                        <mat-select formControlName="QuoteCCY" [(ngModel)]="internalPairObj.QuoteCCY">
+                                            <mat-option *ngFor="let currency of currencies"
+                                                [value]="currency.CurrencySymbol">{{currency.CurrencySymbol}}
+                                                ({{currency.CurrencyName}})</mat-option>
+                                        </mat-select>
+                                        <mat-error>{{errorMsg.QUOTE_CCY}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Base Precision</mat-label>
+                                        <input matInput type="number" placeholder="Placeholder"
+                                            formControlName="BasePrecision">
+                                        <mat-error>{{errorMsg.BASE_PRECISION}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Quote Pricesion</mat-label>
+                                        <input matInput type="number" placeholder="Placeholder"
+                                            formControlName="QuotePrecision">
+                                        <mat-error>{{errorMsg.QUOTE_PRECISION}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Value Pricesion</mat-label>
+                                        <input matInput type="number" placeholder="Placeholder"
+                                            formControlName="ValuePrecision">
+                                        <mat-error>{{errorMsg.VALUE_PRECISION}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol alignedLeft">
+                                    <mat-slide-toggle formControlName="IsActive">Is Active</mat-slide-toggle>
+                                </div>
+                            </div>
+
+                            <div class="formColWrapper2 alignRight">
+                                <div class="buttonWrapper">
+                                    <button mat-raised-button class="cancelBtn" type="button" (click)="cancel()">Cancel</button>
+                                    <button mat-raised-button class="primaryBtn"
+                                        type="submit">{{action=='UPDATE'?action:'SAVE'}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,61 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="pageContainer">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h1 class="titleH1">Trade Report</h1>
+                    </div>
+                </div>               
+                <div class="pageCard">   
+                    <div class="headerDiv text-end">
+                        <mat-form-field class="searchBx1 me-2" appearance="outline">
+                            <mat-label>Search </mat-label>
+                            <input matInput (keyup)="applyCurrencyFilter($event)">
+                        </mat-form-field>
+                        <button class="toggleMenuIcon headerButton me-2" mat-raised-button (click)="openCurrencyPopup()">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                        <button class="toggleMenuIcon headerButton" mat-raised-button (click)="getCurrency()">
+                            <mat-icon>refresh</mat-icon>
+                        </button>
+                    </div>
+                    <div class="newapiTable">
+                        <mat-table [dataSource]="currencyDataSource" matSort #currencySort="matSort">
+                            <ng-container *ngFor="let column of currencyColumns" [matColumnDef]="column.columnDef"
+                                [ngSwitch]="column.columnDef">
+
+                                <ng-container *ngSwitchCase="'action'">
+                                    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> {{column.header}}
+                                    </mat-header-cell>
+                                    <mat-cell mat-cell *matCellDef="let element">
+                                        <button class="toggleMenuIcon" mat-button (click)="openCurrencyPopup(element)">
+                                            <mat-icon>border_color</mat-icon>
+                                        </button>
+                                        <button class="toggleMenuIcon" mat-button (click)="deleteCurrencyPopup(element)">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                    </mat-cell>
+                                </ng-container>
+
+                                <ng-container *ngSwitchDefault>
+                                    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> {{column.header}}
+                                    </mat-header-cell>
+                                    <mat-cell mat-cell *matCellDef="let element">
+                                        {{element[column.columnDef]}}
+                                    </mat-cell>
+                                </ng-container>
+
+                            </ng-container>
+                            <mat-header-row mat-header-row *matHeaderRowDef="displayedCurrencyColumns; sticky: true">
+                            </mat-header-row>
+                            <mat-row mat-row *matRowDef="let row; columns: displayedCurrencyColumns;"></mat-row>
+                        </mat-table>
+                        <mat-paginator #currencyPaginator="matPaginator" class="reportPaginator"
+                            [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20, 50, 100]"></mat-paginator>     
+                    </div>               
+                </div> 
+            </div>
+        </div>
+    </div>
+</section>

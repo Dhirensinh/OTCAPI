@@ -1,0 +1,22 @@
+<mat-dialog-content>
+    <div class="popupHeader">
+        Header
+    </div>
+    <div class="keySection">
+        <h6>API Key</h6>
+        <span class="keyNumber">{{element.apiKey}}</span>
+        <button mat-button (click)="copyKey()">
+            <mat-icon>file_copy</mat-icon>
+        </button>
+    </div>
+    <div class="keySection">
+        <h6>Secret Key</h6>
+        <span class="keyNumber">{{element.apiSecret}}</span>
+        <button mat-button (click)="copySecret()">
+            <mat-icon>file_copy</mat-icon>
+        </button>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

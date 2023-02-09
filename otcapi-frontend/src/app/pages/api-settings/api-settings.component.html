@@ -1,0 +1,71 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="pageContainer">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h1 class="titleH1">API Settings</h1>
+                    </div>
+                    <div>
+                        <button class="headerButton" mat-raised-button routerLink="/api-key"> New API Key</button>
+                    </div>
+                </div>
+                <div class="defaultTable apiSetting">
+                    <mat-table [dataSource]="apiKeyDataSource" matSort #apiKeySort="matSort">
+                        <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef"
+                            [ngSwitch]="column.columnDef">
+                            <ng-container *ngSwitchCase="'action'">
+                                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> {{column.header}}
+                                </mat-header-cell>
+                                <mat-cell mat-cell *matCellDef="let element">
+                                    <button class="toggleMenuIcon" mat-button (click)="editApiKey(element)">
+                                        <mat-icon>border_color</mat-icon>
+                                    </button>
+                                    <button class="toggleMenuIcon" mat-button (click)="deleteApiKey(element)">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </mat-cell>
+                            </ng-container>
+
+                            <ng-container *ngSwitchCase="'key'">
+                                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> {{column.header}}
+                                </mat-header-cell>
+                                <mat-cell mat-cell *matCellDef="let element">
+                                    <div class="ellipsisTxt">{{column.cell(element)}}</div>
+                                    <button class="copyIcon">
+                                        <mat-icon title="Copy">file_copy</mat-icon>
+                                    </button>
+                                </mat-cell>
+                            </ng-container>
+
+                            <ng-container *ngSwitchCase="'secret_key'">
+                                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> {{column.header}}
+                                </mat-header-cell>
+                                <mat-cell mat-cell *matCellDef="let element">
+                                    <div class="ellipsisTxt">{{column.cell(element)}}</div>
+                                    <button class="copyIcon">
+                                        <mat-icon title="Copy">file_copy</mat-icon>
+                                    </button>
+                                </mat-cell>
+                            </ng-container>
+
+                            <ng-container *ngSwitchDefault>
+                                <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> {{column.header}}
+                                </mat-header-cell>
+                                <mat-cell mat-cell *matCellDef="let element">
+                                    {{column.cell(element)}}
+                                </mat-cell>
+                            </ng-container>
+                        </ng-container>
+                        <mat-header-row mat-header-row
+                            *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                        <mat-row mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+                    <mat-paginator #apiKeyPaginator="matPaginator" class="reportPaginator" [length]="totalCount"
+                        [pageIndex]="currentPage" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20, 50, 100]"
+                        showFirstLastButtons></mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

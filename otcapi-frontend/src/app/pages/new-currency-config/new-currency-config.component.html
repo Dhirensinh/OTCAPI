@@ -1,0 +1,171 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="pageContainer">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h1 class="titleH1"><a href="/currency-config">CURRENCY</a><span> | {{action | uppercase}}
+                                CURRENCY</span></h1>
+                    </div>
+                </div>
+                <div class="formSection">
+                    <form class="formControl" [formGroup]="currencyForm" (ngSubmit)="submit()">
+                        <div class="formContainer">
+                            <div class="formColWrapper2">
+                                <div class="formCol multiInlineRadio">
+                                    <mat-radio-group aria-label="Select Currency Type" formControlName="CurrencyType"
+                                        [(ngModel)]="currencyObject.CurrencyType">
+                                        <mat-radio-button [value]="currencyTypeObj.FIAT">{{currencyTypeObj.FIAT}}</mat-radio-button>
+                                        <mat-radio-button [value]="currencyTypeObj.COIN">{{currencyTypeObj.COIN}}</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Currency Name</mat-label>
+                                        <input matInput placeholder="Placeholder" formControlName="CurrencyName">
+                                        <mat-error>{{ errorMsg.CURRENCY_NAME }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Currency Symbol</mat-label>
+                                        <input matInput placeholder="Placeholder" formControlName="CurrencySymbol">
+                                        <mat-error>{{ errorMsg.CURRENCY_SYMBOL }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Exchange Fee</mat-label>
+                                        <input type="number" matInput placeholder="Placeholder" formControlName="ExchangeFee">
+                                        <mat-error>{{ errorMsg.EXCHANGE_FEE }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Exchange Fee Type</mat-label>
+                                        <mat-select  [(ngModel)]="currencyObject.ExchangeFeeType" formControlName="ExchangeFeeType">
+                                            <mat-option *ngFor="let type of feeTypes" [value]="type">{{type}}</mat-option>
+                                        </mat-select>
+                                        <mat-error>{{ errorMsg.EXCHANGE_FEE_TYPE }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2"  *ngIf="IsFiat">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Deposit Minimum</mat-label>
+                                        <input type="number" matInput placeholder="Placeholder" formControlName="DepositMinimum">
+                                        <mat-error>{{ errorMsg.DEPOSIT_MINIMUM }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Deposit Maximum</mat-label>
+                                        <input type="number" matInput placeholder="Placeholder" formControlName="DepositMaximum">
+                                        <mat-error>{{ errorMsg.DEPOSIT_MAXIMUM }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2" *ngIf="IsFiat">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Deposit Fee</mat-label>
+                                        <input type="number" matInput placeholder="Placeholder" formControlName="DepositFee">
+                                        <mat-error>{{ errorMsg.DEPOSIT_FEE }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="formCol" >
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Deposit Fee Type</mat-label>
+                                        <mat-select formControlName="DepositFeeType" [(ngModel)]="currencyObject.DepositFeeType"> 
+                                            <mat-option *ngFor="let type of feeTypes" [value]="type">{{type}}</mat-option>
+                                        </mat-select>
+                                        <mat-error>{{ errorMsg.DEPOSIT_FEE_TYPE }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="formColWrapper2"  *ngIf="IsFiat">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Withdraw Minimum</mat-label>
+                                        <input type="number" matInput placeholder="Placeholder" formControlName="WithdrawMinimum">
+                                        <mat-error>{{ errorMsg.WITHDRAW_MINIMUM }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Withdraw Maximum</mat-label>
+                                        <input type="number" matInput placeholder="Placeholder" formControlName="WithdrawMaximum">
+                                        <mat-error>{{ errorMsg.WITHDRAW_MAXIMUM }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Withdraw Fee</mat-label>
+                                        <input type="number" matInput placeholder="Placeholder" formControlName="WithdrawFee">
+                                        <mat-error>{{ errorMsg.WITHDRAM_FEE }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="formCol" *ngIf="!IsFiat">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Decimal Place</mat-label>
+                                        <input type="number" matInput placeholder="Placeholder" formControlName="DecimalPlace">
+                                        <mat-error>{{ errorMsg.DECIMAL_PLACE }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="formCol" *ngIf="IsFiat">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Withdraw Fee Type</mat-label>
+                                        <mat-select formControlName="WithdrawFeeType" [(ngModel)]="currencyObject.WithdrawFeeType">
+                                            <mat-option *ngFor="let type of feeTypes" [value]="type">{{type}}</mat-option>
+                                        </mat-select>
+                                        <mat-error>{{ errorMsg.WITHDRAM_FEE_TYPE }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2" *ngIf="!IsFiat">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Activation Charges($)</mat-label>
+                                        <input type="text" matInput placeholder="Placeholder" formControlName="ActivationCharges" [disabled]="true">
+                                        <mat-error>{{ errorMsg.ACTIVATION_CHARGES }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="formCol alignedLeft">
+                                    <mat-slide-toggle  formControlName="IsERC20Token">Is ERC20 Token</mat-slide-toggle>
+                                </div>
+                            </div>
+
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Icon</mat-label>
+                                        <input type="text" matInput placeholder="Placeholder" formControlName="Icon" [disabled]="true">
+                                        <mat-error>{{ errorMsg.ICON }}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="formCol alignedLeft">
+                                    <mat-slide-toggle  formControlName="IsActive">Is Active</mat-slide-toggle>
+                                </div>
+                            </div>
+
+                            <div class="formColWrapper2 alignRight">
+                                <div class="buttonWrapper">
+                                    <button mat-raised-button class="cancelBtn" type="button" (click)="cancel()">CANCEL</button>
+                                    <button mat-raised-button class="primaryBtn" type="submit">{{action=='UPDATE'?action:'SAVE'}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

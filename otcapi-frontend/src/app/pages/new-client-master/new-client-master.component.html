@@ -1,0 +1,52 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="pageContainer">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h1 class="titleH1"><a href="/client-master">CLIENT MASTER</a><span> | {{action |
+                                uppercase}} CLIENT MASTER</span></h1>
+                    </div>
+                </div>
+                <div class="formSection">
+                    <form class="formControl" [formGroup]="clientMasterForm" (ngSubmit)="submit()">
+                        <div class="formContainer center">
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Client Name</mat-label>
+                                        <input matInput placeholder="Placeholder" formControlName="ClientName">
+                                        <mat-error>{{errorMsg.CLIENT_NAME}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Description</mat-label>
+                                        <input matInput placeholder="Placeholder" formControlName="Description">
+                                        <mat-error>{{errorMsg.DESCRIPTION}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            
+                            <div class="formColWrapper2">
+                                <div class="formCol alignedLeft">
+                                    <mat-slide-toggle formControlName="IsActive">Is Active</mat-slide-toggle>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2 alignRight">
+                                <div class="buttonWrapper">
+                                    <button mat-raised-button class="cancelBtn" type="button"
+                                        (click)="cancel()">Cancel</button>
+                                    <button mat-raised-button class="primaryBtn"
+                                        type="submit">{{action=='UPDATE'?action:'SAVE'}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

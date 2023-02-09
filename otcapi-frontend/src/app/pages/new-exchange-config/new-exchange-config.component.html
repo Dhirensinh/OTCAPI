@@ -1,0 +1,67 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="pageContainer">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h1 class="titleH1"><a href="/exchange-config">EXCHANGE</a><span> | {{action | uppercase}} EXCHANGE</span></h1>
+                    </div>
+                </div>
+                <div class="formSection">
+                    <form class="formControl" [formGroup]="exchangeForm" (ngSubmit)="submit()">
+                        <div class="formContainer center">
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Exchange Name</mat-label>
+                                        <input matInput placeholder="Placeholder" formControlName="ExchangeName">
+                                        <mat-error>{{errorMsg.EXCHANGE_NAME}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol alignedLeft">
+                                    <mat-slide-toggle formControlName="IsLiquidityProvider">Is Liquidity Provider</mat-slide-toggle>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol alignedLeft">
+                                    <mat-slide-toggle formControlName="IsTargetExchange">Is Target Exchange</mat-slide-toggle>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Maker Fee</mat-label>
+                                        <input matInput type="number" placeholder="Placeholder" formControlName="MakerFee">
+                                        <mat-error>{{errorMsg.MAKER_FEE}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Taker Fee</mat-label>
+                                        <input matInput type="number" placeholder="Placeholder" formControlName="TakerFee">
+                                        <mat-error>{{errorMsg.TAKER_FEE}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol alignedLeft">
+                                    <mat-slide-toggle formControlName="IsActive">Is Active</mat-slide-toggle>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2 alignRight">
+                                <div class="buttonWrapper">
+                                    <button mat-raised-button class="cancelBtn" type="button" (click)="cancel()">Cancel</button>
+                                    <button mat-raised-button class="primaryBtn" type="submit">{{action=='UPDATE'?action:'SAVE'}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

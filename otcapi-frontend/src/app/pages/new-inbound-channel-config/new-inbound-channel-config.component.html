@@ -1,0 +1,75 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="pageContainer">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h1 class="titleH1"><a href="/inbound-channel-config">INBOUND CHANNEL</a><span> | {{action |
+                                uppercase}} INBOUND CHANNEL</span></h1>
+                    </div>
+                </div>
+                <div class="formSection">
+                    <form class="formControl" [formGroup]="inboundChannelForm" (ngSubmit)="submit()">
+                        <div class="formContainer center">
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="selectBox" appearance="outline">
+                                        <mat-label>Exchange</mat-label>
+                                        <mat-select formControlName="Exchange" (ngModelChange)="getChannelName()">
+                                            <mat-option *ngFor="let exchange of exchanges"
+                                                [value]="exchange.ExchangeName">{{exchange.ExchangeName}}</mat-option>
+                                        </mat-select>
+                                        <mat-error>{{errorMsg.EXCHANGE}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="selectBox" appearance="outline">
+                                        <mat-label>Pair</mat-label>
+                                        <mat-select formControlName="Pair" (ngModelChange)="getChannelName()">
+                                            <mat-option *ngFor="let internalPair of internalPairs"
+                                                [value]="internalPair.PairName">{{internalPair.PairName}}</mat-option>
+                                        </mat-select>
+                                        <mat-error>{{errorMsg.PAIR}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Quantity</mat-label>
+                                        <input matInput placeholder="Placeholder" formControlName="Quantity" (keyup)="getChannelName()">
+                                        <mat-error>{{errorMsg.QUANTITY}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol">
+                                    <mat-form-field class="searchBox" appearance="outline">
+                                        <mat-label>Inbound Channel</mat-label>
+                                        <input matInput placeholder="Placeholder" formControlName="InboundChannel" readonly style="pointer-events: none;">
+                                        <mat-error>{{errorMsg.INBOUND_CHANNEL}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2">
+                                <div class="formCol alignedLeft">
+                                    <mat-slide-toggle formControlName="IsActive">Is Active</mat-slide-toggle>
+                                </div>
+                            </div>
+                            <div class="formColWrapper2 alignRight">
+                                <div class="buttonWrapper">
+                                    <button mat-raised-button class="cancelBtn" type="button"
+                                        (click)="cancel()">Cancel</button>
+                                    <button mat-raised-button class="primaryBtn"
+                                        type="submit">{{action=='UPDATE'?action:'SAVE'}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

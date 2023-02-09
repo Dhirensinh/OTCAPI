@@ -1,0 +1,57 @@
+.loginSec {
+    background-image: url('/assets/img/login-bg.png') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.loginBox {
+    background: #fff;
+    border-radius: 3px;
+    /* border: 1px solid #dad1f8; */
+    padding: 10px 0;
+    box-shadow: 0 0px 15px rgb(88 50 223 / 10%);
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+}
+.loginLogo {
+    background: #5832df;
+    padding: 20px;
+    width: 100%;
+    margin-top: -10px;
+    text-align: center;
+}
+.loginLogo img {
+    width: 200px;
+}
+.loginBox h1 {
+    color: #262262;
+    font-size: 24px;
+    font-weight: 400;
+    padding-top: 20px;
+    text-align: left;
+    padding-left: 20px;
+}
+.loginBox form {
+    padding: 10px 20px;
+}
+.loginBox form label {
+    font-size: 1rem;
+    color: #262262;
+    line-height: 1;
+}
+.form-control:focus {
+    border: 1px solid #5832df;
+    box-shadow: none;
+}
+.primaryBtn {
+    padding: 10px 35px !important;
+}
